@@ -1,7 +1,7 @@
-const { Thought, User } = require('../models');
+const { thought, User } = require('../models');
 
 const thoughtsController = {
-  
+
   get_all_thoughts(req, res) {
     Thought.find({})
       .then(dbThoughtData => res.json(dbThoughtData))
@@ -11,7 +11,7 @@ const thoughtsController = {
       });
   },
 
- 
+
   get_thought_by_id({ params }, res) {
     Thought.findOne({ _id: params.id })
       .then(dbThoughtData => {
@@ -27,7 +27,7 @@ const thoughtsController = {
       });
   },
 
- 
+
   add_thought({ body }, res) {
     Thought.create(body)
       .then(dbThoughtData => {
@@ -89,7 +89,7 @@ const thoughtsController = {
       .catch(error => res.json(error));
   },
 
-  
+
   remove_reaction({ params }, res) {
     Thought.findOneAndUpdate(
       { _id: params.thoughtId },
